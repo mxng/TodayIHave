@@ -1,3 +1,3 @@
 class Tag < ApplicationRecord
-  belongs_to :post_tag
+  has_many :post_tags
 end
