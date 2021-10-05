@@ -1,4 +1,5 @@
 <%= simple_form_for @post do |f| %>
   <%= f.input :content %>
+  <%= f.association :tags, as: :check_boxes %>
   <%= f.button :submit %>
 <% end %>
