@@ -4,5 +4,5 @@ Rails.application.routes.draw do
 
   root to: "home#index"
 
-  resources :posts, only: %i[new create]
+  resources :posts, only: %i[show new create]
 end

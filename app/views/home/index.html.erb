@@ -1,0 +1,12 @@
+<h1>Today I have</h1>
+<h2>Today</h2>
+
+<div class="d-flex posts p-2">
+  <% @posts.each do |post| %>
+    <p><%= post.user.email %> has...</p>
+    <p class="flex-grow-1 px-5"><%= post.content %></p>
+    <%= link_to "View Update", post_path(post) %>
+  <% end %>
+</div>
+
+<h2>Yesterday</h2>
