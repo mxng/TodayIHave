@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_05_125016) do
+ActiveRecord::Schema.define(version: 2021_10_05_130309) do
 
   create_table "post_tags", force: :cascade do |t|
     t.integer "post_id", null: false
@@ -26,10 +26,7 @@ ActiveRecord::Schema.define(version: 2021_10_05_125016) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string "css"
-    t.string "unittests"
-    t.string "bugfix"
-    t.string "webdesign"
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
