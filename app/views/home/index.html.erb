@@ -2,10 +2,17 @@
 <h2>Today</h2>
 
 <% @posts.each do |post| %>
-  <div class="d-flex posts p-2">
+  <div class="d-flex post p-2">
     <p><%= post.user.email %> has...</p>
     <p class="flex-grow-1 px-5"><%= post.content %></p>
     <%= link_to "View Update", post_path(post) %>
+  </div>
+  <div class="d-flex justify-content-end tags">
+
+    <% post.tags.each do |tag| %>
+      <p><%= tag.name %></p>
+    <% end %>
+
   </div>
 <% end %>
 
