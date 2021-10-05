@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_05_130309) do
-
-  create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
-    t.index ["post_id"], name: "index_post_tags_on_post_id"
-    t.index ["tag_id"], name: "index_post_tags_on_tag_id"
-  end
+ActiveRecord::Schema.define(version: 2021_10_05_145552) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -27,6 +20,15 @@ ActiveRecord::Schema.define(version: 2021_10_05_130309) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+  end
+
+  create_table "updates", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "post_id", null: false
+    t.integer "tag_id", null: false
+    t.index ["post_id"], name: "index_updates_on_post_id"
+    t.index ["tag_id"], name: "index_updates_on_tag_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,7 +45,7 @@ ActiveRecord::Schema.define(version: 2021_10_05_130309) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "post_tags", "posts"
-  add_foreign_key "post_tags", "tags"
   add_foreign_key "posts", "users"
+  add_foreign_key "updates", "posts"
+  add_foreign_key "updates", "tags"
 end

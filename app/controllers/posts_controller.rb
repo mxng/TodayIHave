@@ -14,7 +14,7 @@ class PostsController < ApplicationController
       next if tag_id == ''
 
       tag = Tag.find(tag_id)
-      @post_tag = PostTag.create(post: @post, tag: tag)
+      @update = Update.create(post: @post, tag: tag)
     end
 
     if @post.save
