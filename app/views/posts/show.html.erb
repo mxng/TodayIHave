@@ -1,5 +1,5 @@
 <% @post.tags.each do |tag| %>
-  <p><%= tag %></p>
+  <p><span class="rounded border border-dark py-2 px-3"><i class="fas fa-tags"></i> <%= tag %></span></p>
 <% end %>
 <p><%= @post.content %></p>
 <p class="text-muted"><em>Written by <%= @post.user.email %> on <%= @post.created_at.strftime('%v') %></em></p>
