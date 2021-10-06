@@ -10,6 +10,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    @post.tags.each do |tag|
+      current_user.tag(@post, with: tag, on: tags)
+    end
 
     if @post.save
       redirect_to root_path
