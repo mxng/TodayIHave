@@ -1,6 +1,5 @@
 <div class="d-flex">
   <h1 style="margin-right: 50px;">Today I have</h1>
-
   <!-- Button trigger modal -->
   <% unless current_user.posts.count != 0 && current_user.posts.last.created_at.strftime('%x') == Time.now.strftime('%x') %>
     <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -9,8 +8,6 @@
     <%= render "new_post_modal" %>
   <% end %>
 </div>
-
-
 
 <% if @posts == [] %>
   <h2 class="text-muted text-center mt-5">There are no posts</h2>
