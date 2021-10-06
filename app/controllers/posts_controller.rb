@@ -3,6 +3,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
+  def index
+    @posts = current_user.posts
+  end
+
   def new
     @post = Post.new
   end

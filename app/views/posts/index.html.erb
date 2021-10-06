@@ -1,0 +1,5 @@
+<h1>My Updates</h1>
+
+<% @posts.each do |post| %>
+  <%= render partial: 'user_posts', locals: {post: post} %>
+<% end %>
