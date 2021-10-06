@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   acts_as_taggable_on :tags
 
   validates :content, presence: true
+  validates :created_at, uniqueness: true
 end
