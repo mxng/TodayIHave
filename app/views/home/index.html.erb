@@ -1,26 +1,44 @@
-<h1>Today I have</h1>
+<div class="d-flex">
+  <h1 style="margin-right: 50px;">Today I have</h1>
 
-<h2>Today</h2>
-<% @posts.each do |post| %>
-  <% if post.created_at.strftime('%x') == Time.now.strftime('%x') %>
-    <%= render partial: 'posts', locals: {post: post} %>
+  <!-- Button trigger modal -->
+  <% unless current_user.posts.count != 0 && current_user.posts.last.created_at.strftime('%x') == Time.now.strftime('%x') %>
+    <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      New Updates
+    </button>
+    <%= render "new_post_modal" %>
   <% end %>
-<% end %>
+</div>
 
-<!--
-<h2>Yesterday</h2>
-<% @posts.each do |post| %>
-  <% if post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
-    <%= render partial: 'posts', locals: {post: post} %>
-  <% end %>
-<% end %>
--->
 
-<% @posts_by_month.each do |mon_post| %>
-  <h2><%= Date::MONTHNAMES[mon_post.first] %></h2>
-  <% mon_post.last.each do |post| %>
-    <%# unless post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
+
+<% if @posts == [] %>
+  <h2 class="text-muted text-center mt-5">There are no posts</h2>
+<% else %>
+
+  <h2>Today</h2>
+  <% @posts.each do |post| %>
+    <% if post.created_at.strftime('%x') == Time.now.strftime('%x') %>
       <%= render partial: 'posts', locals: {post: post} %>
-    <%# end %>
+    <% end %>
   <% end %>
+
+  <!--
+  <h2>Yesterday</h2>
+  <% @posts.each do |post| %>
+    <% if post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
+      <%= render partial: 'posts', locals: {post: post} %>
+    <% end %>
+  <% end %>
+  -->
+
+  <% unless @posts_by_month.nil? %>
+    <% @posts_by_month.each do |mon_post| %>
+      <h2><%= Date::MONTHNAMES[mon_post.first] %></h2>
+      <% mon_post.last.each do |post| %>
+        <%= render partial: 'posts', locals: {post: post} %>
+      <% end %>
+    <% end %>
+  <% end %>
+
 <% end %>

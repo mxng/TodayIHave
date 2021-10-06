@@ -10,11 +10,13 @@
       <% if user_signed_in? %>
         <%= link_to "Home", root_path, class: "nav-link", aria_current: "page" %>
 
+        <!--
         <% if current_user.posts.count != 0 && current_user.posts.last.created_at.strftime('%x') == Time.now.strftime('%x') %>
         <%= link_to "New Updates", new_post_path, class: "nav-link disabled" %>
         <% else %>
         <%= link_to "New Updates", new_post_path, class: "nav-link" %>
         <% end %>
+        -->
 
         <%= link_to "Tags", tags_path, class: "nav-link" %>
         <%= link_to "My Updates", posts_path, class: "nav-link" %>

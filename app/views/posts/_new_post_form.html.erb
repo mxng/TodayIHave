@@ -1,0 +1,5 @@
+<%= simple_form_for @post do |f| %>
+  <%= f.input :content %>
+  <%= f.input :tag_list, label: "Add tags, separated by comma" %>
+  <%= f.button :submit, class: "btn btn-primary w-100 mt-3" %>
+<% end %>
