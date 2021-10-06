@@ -1,18 +1,24 @@
 <h1>Today I have</h1>
-<h2>Today</h2>
 
+<h2>Today</h2>
 <% @posts.each do |post| %>
   <% if post.created_at.strftime('%x') == Time.now.strftime('%x') %>
     <%= render partial: 'posts', locals: {post: post} %>
   <% end %>
 <% end %>
 
-<h2>Yesterday</h2>
 
+<h2>Yesterday</h2>
 <% @posts.each do |post| %>
   <% if post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
     <%= render partial: 'posts', locals: {post: post} %>
   <% end %>
 <% end %>
 
-<h2></h2>
+
+<h2>Past</h2>
+<% @grouped_posts[false].each do |post| %>
+  <% unless post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
+    <%= render partial: 'posts', locals: {post: post} %>
+  <% end %>
+<% end %>
