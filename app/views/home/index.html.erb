@@ -7,18 +7,20 @@
   <% end %>
 <% end %>
 
-
+<!--
 <h2>Yesterday</h2>
 <% @posts.each do |post| %>
   <% if post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
     <%= render partial: 'posts', locals: {post: post} %>
   <% end %>
 <% end %>
+-->
 
-
-<h2>Past</h2>
-<% @grouped_posts[false].each do |post| %>
-  <% unless post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
-    <%= render partial: 'posts', locals: {post: post} %>
+<% @posts_by_month.each do |mon_post| %>
+  <h2><%= Date::MONTHNAMES[mon_post.first] %></h2>
+  <% mon_post.last.each do |post| %>
+    <%# unless post.created_at.strftime('%x') == Date.yesterday.strftime('%x') %>
+      <%= render partial: 'posts', locals: {post: post} %>
+    <%# end %>
   <% end %>
 <% end %>
