@@ -9,7 +9,7 @@
   </div>
   <div class="d-flex justify-content-end tags">
 
-    <% post.updates.each do |update| %>
+    <% post.posts_tags.each do |update| %>
       <p><%= update.tag.name %></p>
     <% end %>
 

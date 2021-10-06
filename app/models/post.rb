@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :updates, dependent: :destroy
-  has_and_belongs_to_many :tags, through: :updates
+  acts_as_taggable_on :tags
 
   validates :content, presence: true
 end
