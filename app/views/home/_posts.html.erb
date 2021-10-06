@@ -1,0 +1,11 @@
+<div class="d-flex post p-2 border border-dark rounded m-3">
+  <p><%= post.user.email %> has...</p>
+  <p class="flex-grow-1 px-5"><%= post.content %></p>
+  <%= link_to "View Update", post_path(post) %>
+</div>
+
+<div class="d-flex justify-content-end tags">
+  <% post.tag_list.each do |tag| %>
+    <p class="mx-3"><span class="rounded border border-dark py-2 px-3"><i class="fas fa-tags"></i> <%= tag %></span></p>
+  <% end %>
+</div>
